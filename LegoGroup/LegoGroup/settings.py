@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # register applications with the project
     'catalog.apps.CatalogConfig', # specifies the configuration object CatalogConfig
-    'django_filters'
+    #'django_filters'
 ]
 
 MIDDLEWARE = [
