@@ -4,12 +4,12 @@ import uuid
 
 # define the category and subcategory first to reference them in later models as foreign keys directly
 
+CATEGORY_CHOICES = [('Brick', 'Brick'), ('Technic', 'Technic'), ('Electric', 'Electric')]
+
 class Category(models.Model):
     """
     Defines a lego part category.
     """
-
-    CATEGORY_CHOICES = [('Brick', 'Brick'), ('Technic', 'Technic'), ('Electric', 'Electric')]
 
     id = models.CharField(primary_key = True, max_length = 50, default = uuid.uuid4, editable = False)
     name = models.CharField(unique = True, max_length = 50, help_text = "Select category", choices = CATEGORY_CHOICES)
@@ -36,10 +36,10 @@ class Subcategory(models.Model):
 
     id = models.CharField(primary_key = True, max_length = 50, default = uuid.uuid4, editable = False) # populate once the category has been chosen
     name = models.CharField(unique = True, max_length = 50, help_text = "Select subcategory", choices = BRICK_SUBCATEGORY_CHOICES + TECHNIC_SUBCATEGORY_CHOICES + ELECTRIC_SUBCATEGORY_CHOICES)
-    category = models.ForeignKey(Category, on_delete = models.PROTECT, null = True, default = Category.get_category_of(name), editable = False)
+    category = models.ForeignKey(Category, on_delete = models.PROTECT, null = True)
 
     def __str__(self):
-        return self.subcategory_name
+        return self.name
 
     def get_subcategories_of(category):
         """
@@ -73,7 +73,7 @@ class LegoPart(models.Model):
     description = models.TextField(max_length = 1000, help_text = "Type part description (up to 1000 characters)", blank = True)
     image = models.ImageField(blank = True)
     category = models.ForeignKey(Category, on_delete = models.PROTECT, null = True)
-    subcategory = models.ForeignKey(Subcategory, on_delete = models.PROTECT, choices = Subcategory.get_subcategories_of(category), null = True)
+    subcategory = models.ForeignKey(Subcategory, on_delete = models.PROTECT, null = True)
     public_access = models.BooleanField(default = False)
 
     def __str__(self):
