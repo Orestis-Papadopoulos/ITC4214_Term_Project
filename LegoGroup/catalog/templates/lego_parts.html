@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% blobck title %}
+    <title>
+        BrickViewer | Lego Parts
+    </title>
+{% endblock %}
+
+<!-- Create a listview that will be populated by the query results -->
+
+{% block content %}
+    <h1>
+        Search Results
+    </h1>
+    <p>
+        There are {{ lego_parts_count }} lego pieces in total stored in the database.
+    </p>
+{% endblock %}
