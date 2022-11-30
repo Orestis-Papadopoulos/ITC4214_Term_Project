@@ -7,7 +7,120 @@
 {% endblock %}
 
 {% block content %}
-    <h1>
-        Welcome home.
-    </h1>
+    
+    <!-- start of carousel -->
+    <div id="home_carousel" class="carousel carousel-dark slide w-100" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Lego logo -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                {% load static %}
+                <img src="{% static 'catalog/images/lego_logo.jpg' %}" class="d-block w-100" alt="IMAGE_ERROR">
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>Bring your ideas to life</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mindstorms -->
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                {% load static %}
+                <img src="{% static 'catalog/images/gear.png' %}" class="d-block w-100" alt="IMAGE_ERROR">
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>Build mechanisms using gears</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- pneumatic cylinder -->
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                {% load static %}
+                <img src="{% static 'catalog/images/pneumatic_cylinder.jpg' %}" class="d-block w-100" alt="IMAGE_ERROR">
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>Build mechanisms using gears</h4>
+                </div>
+            </div>
+        </div>
+          
+        <button class="carousel-control-prev" type="button" data-bs-target="#home_carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#home_carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- end of carousel -->
+
+    <br><br><br><br>
+
+    <!-- start of cards -->
+    <div class="row">
+
+        <!-- category: brick -->
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %}
+                <img src="{% static 'catalog/images/yellow_bricks.jpg' %}" class="card-img-top" alt="IMAGE_ERROR">
+                <div class="card-header">
+                    Bricks
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Develop children's creativity with classic bricks. This category helps them get started,
+                        while special pieces alongside classic bricks inspire even further. And because this category
+                        spans so many different age groups, there is fun for all the family and imagination for every generation.
+                    </p>
+                    <a href="#" class="btn btn-primary">View category</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- category: technic -->
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %}
+                <img src="{% static 'catalog/images/technic.jpg' %}" class="card-img-top" alt="IMAGE_ERROR">
+                <div class="card-header">
+                    Technic
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Pieces ideal for mechatronics. They provide an advanced and complex building experience based
+                        on real-life vehicles big and small like sportscars, motorcycles and construction vehicles.
+                        They are packed full of authentic features like functioning gearboxes, wheels and axles.
+                    </p>
+                    <a href="#" class="btn btn-primary">View category</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- category: electric -->
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %}
+                <img src="{% static 'catalog/images/electricity.jpg' %}" class="card-img-top" alt="IMAGE_ERROR">
+                <div class="card-header">
+                    Electric
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Parts that connect to battery boxes to motorize your sets. Bring out your inner nerd and make Faraday, Maxwell,
+                        and Tesla jealous.
+                    </p>
+                    <a href="#" class="btn btn-primary">View category</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- end of cards -->
 {% endblock %}
