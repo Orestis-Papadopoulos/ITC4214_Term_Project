@@ -7,9 +7,14 @@
 {% endblock %}
 
 {% block content %}
+
+    <br>
+    <p class="h1">
+        Welcome home
+    </p>
     
     <!-- start of carousel -->
-    <div id="home_carousel" class="carousel carousel-dark slide w-100" data-bs-ride="false">
+    <div id="home_carousel" class="carousel slide w-100" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -20,15 +25,13 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 {% load static %}
-                <img src="{% static 'catalog/images/lego_logo.jpg' %}" class="d-block w-100" alt="IMAGE_ERROR">
+                <img src="{% static 'catalog/images/lego_logo.png' %}" class="d-block w-100" alt="IMAGE_ERROR">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>Bring your ideas to life</h4>
                 </div>
             </div>
-        </div>
-
-        <!-- Mindstorms -->
-        <div class="carousel-inner">
+        
+            <!-- gear -->
             <div class="carousel-item">
                 {% load static %}
                 <img src="{% static 'catalog/images/gear.png' %}" class="d-block w-100" alt="IMAGE_ERROR">
@@ -36,15 +39,13 @@
                     <h4>Build mechanisms using gears</h4>
                 </div>
             </div>
-        </div>
 
-        <!-- pneumatic cylinder -->
-        <div class="carousel-inner">
+            <!-- pneumatic cylinder -->
             <div class="carousel-item">
                 {% load static %}
-                <img src="{% static 'catalog/images/pneumatic_cylinder.jpg' %}" class="d-block w-100" alt="IMAGE_ERROR">
+                <img src="{% static 'catalog/images/pneumatic_cylinder.png' %}" class="d-block w-100" alt="IMAGE_ERROR">
                 <div class="carousel-caption d-none d-md-block">
-                    <h4>Build mechanisms using gears</h4>
+                    <h4>Learn about mechanical principles</h4>
                 </div>
             </div>
         </div>
