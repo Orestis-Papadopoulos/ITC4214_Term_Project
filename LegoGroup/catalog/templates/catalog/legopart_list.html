@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% blobck title %}
+{% block title %}
     <title>
         BrickViewer | Lego Parts
     </title>
@@ -12,7 +12,13 @@
     <h1>
         Search Results
     </h1>
+    <!-- no parentheses -->
     <p>
-        There are {{ lego_parts_count }} lego pieces in total stored in the database.
+        Lego pieces stored in the database: {{ legopart_list.count }}
     </p>
+    {% for part in legopart_list %}
+        <li>
+            {{ part.name }}
+        </li>
+    {% endfor %}
 {% endblock %}

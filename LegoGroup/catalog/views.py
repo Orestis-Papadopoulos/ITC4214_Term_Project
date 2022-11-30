@@ -2,15 +2,18 @@ from django.shortcuts import render
 from .models import *
 from django.views import generic
 
+"""
 def base(request):
-    return render(request, "base.html")
+    return render(request, 'base.html')
+"""
 
 def index(request):
-    pass
+    return render(request, 'index.html')
 
 def about(request):
     pass
 
+""" this is implemented as a class-based view
 def lego_parts(request):
     lego_parts_count = LegoPart.objects.count() # .all() is implied by default
 
@@ -19,6 +22,7 @@ def lego_parts(request):
     }
 
     return render(request, 'lego_parts.html', context = context)
+"""
 
 def login(request):
     pass
@@ -30,5 +34,5 @@ def create_account(request):
 def user_profile(request):
     pass
 
-class LegoPartListView(generic.DetailView):
+class LegoPartListView(generic.ListView):
     model = LegoPart
