@@ -9,10 +9,7 @@
 {% block content %}
 
     <br>
-    <p class="h1">
-        Welcome home
-    </p>
-    
+
     <!-- start of carousel -->
     <div id="home_carousel" class="carousel slide w-100" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -21,8 +18,8 @@
             <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
 
-        <!-- Lego logo -->
         <div class="carousel-inner">
+            <!-- Lego logo -->
             <div class="carousel-item active">
                 {% load static %}
                 <img src="{% static 'catalog/images/lego_logo.png' %}" class="d-block w-100" alt="IMAGE_ERROR">

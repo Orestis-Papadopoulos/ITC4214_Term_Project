@@ -28,6 +28,9 @@ urlpatterns = [
     # redirect the root URL 127.0.0.1:8000 to the URL 127.0.0.1:8000/catalog/
     path('', RedirectView.as_view(url = 'catalog/', permanent = True)),
 
+    # site authentication urls
+    path('accounts/', include('django.contrib.auth.urls')),
+
     # PRODUCES ERROR; enable the serving of static files during development
     #static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 ]
