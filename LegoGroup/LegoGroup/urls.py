@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+import catalog.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name = 'admin'),
 
     # forward requests starting with 'catalog/' to the catalog.urls module
+    # every URL in the 'catalog' app will be prefixed with 'catalog/' ??? isn't that what the lext command does ???
     path('catalog/', include('catalog.urls')),
 
     # redirect the root URL 127.0.0.1:8000 to the URL 127.0.0.1:8000/catalog/
