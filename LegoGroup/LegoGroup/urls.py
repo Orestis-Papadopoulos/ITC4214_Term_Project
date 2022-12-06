@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-import catalog.views
+from register import views as rv
 
 urlpatterns = [
     path('admin/', admin.site.urls, name = 'admin'),
@@ -32,6 +32,8 @@ urlpatterns = [
 
     # site authentication urls
     path('accounts/', include('django.contrib.auth.urls')),
+
+    path("register/", rv.register, name = "register"),
 
     # PRODUCES ERROR; enable the serving of static files during development
     #static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

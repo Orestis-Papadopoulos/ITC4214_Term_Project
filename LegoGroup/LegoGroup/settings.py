@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 
-    # register applications with the project
-    'catalog.apps.CatalogConfig', # specifies the configuration object CatalogConfig
+    # register applications with the project (specify the configuration object CatalogConfig)
+    'catalog.apps.CatalogConfig',
+    'register.apps.RegisterConfig',
     #'django_filters'
 ]
 
@@ -129,3 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirects to Home page after login 
 LOGIN_REDIRECT_URL = '/'
+
+# crispy forms
+CRISPY_TEMPLATE_PACK = "bootstrap4"
