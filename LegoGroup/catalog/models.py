@@ -68,7 +68,7 @@ class LegoPart(models.Model):
     Defines attributes of a Lego part.
     """
 
-    id = models.UUIDField(primary_key = True, max_length = 50, default = uuid.uuid4, editable = False)
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = True)
     name = models.CharField(max_length = 50, help_text = "Type part name")
     description = models.TextField(max_length = 1000, help_text = "Type part description (up to 1000 characters)", blank = True)
     image = models.ImageField(blank = True)

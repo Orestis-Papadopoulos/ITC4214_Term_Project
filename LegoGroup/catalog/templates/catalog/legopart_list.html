@@ -9,19 +9,20 @@
 <!-- Create a listview that will be populated by the query results -->
 
 {% block content %}
-    <h1>
-        Search Results
-    </h1>
-
-    <br>
-
-    <!-- no parentheses -->
+    <h1>Parts List</h1>
     <p>
         Lego pieces stored in the database: {{ legopart_list.count }}
     </p>
-    {% for part in legopart_list %}
-        <li>
-            {{ part.name }}
-        </li>
-    {% endfor %}
+    {% if legopart_list %}
+        <ul>
+            {% for part in legopart_list %}
+                <li>
+                    <!-- get the primary key (pk) of the part so the url becomes '/catalog/lego_parts/<pk>' -->
+                    <a href="{{ part.pk }}">{{ part.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no Lego parts in the database.</p>
+    {% endif %}
 {% endblock %}

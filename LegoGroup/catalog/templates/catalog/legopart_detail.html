@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>
+        BrickViewer | {{ legopart.name }} Details
+    </title>
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Details about part: "{{ legopart.name }}"
+    </h1>
+    <br>
+    <hr>
+
+    <p>
+        <strong>Id:</strong>
+        {{ legopart.id }}
+    </p>
+    <p>
+        <strong>Name:</strong>
+        {{ legopart.name }}
+    </p>
+    <p>
+        <strong>Description:</strong>
+        {{ legopart.description }}
+    </p>
+    <p>
+        <strong>Category:</strong>
+        {{ legopart.category }}
+    </p>
+    <p>
+        <strong>Subcategory:</strong>
+        {{ legopart.subcategory }}
+    </p>
+    <p>
+        <strong>Publicly available:</strong>
+        {{ legopart.public_access }}
+    </p>
+
+    <!-- not working -->
+    <img src="{{ legopart.image }}" alt="IMAGE_ERROR" class="img-thumbnail">
+{% endblock %}
