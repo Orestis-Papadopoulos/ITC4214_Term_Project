@@ -33,7 +33,10 @@ urlpatterns = [
     # site authentication urls
     path('accounts/', include('django.contrib.auth.urls')),
 
-    path("register/", rv.register, name = "register"),
+    path('register/', rv.register, name = 'register'),
+    path('', include('django.contrib.auth.urls')), # what does this do ???
+
+    path('accounts/login/', rv.login, name = 'login'),
 
     # PRODUCES ERROR; enable the serving of static files during development
     #static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
