@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import*
 from django.views import generic
-from .forms import SearchForm
+from .forms import SearchForm, AnonymousSearchForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'index.html')
@@ -9,8 +10,13 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def search(request):
     form = SearchForm()
+    return render(request, 'search.html', {"form": form})
+
+def search_anonymous(request):
+    form = AnonymousSearchForm()
     return render(request, 'search.html', {"form": form})
 
 # start of ListViews

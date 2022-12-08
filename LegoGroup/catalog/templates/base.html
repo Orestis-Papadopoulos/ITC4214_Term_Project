@@ -48,7 +48,11 @@
                             <a class="nav-link" href="{% url 'about' %}">About</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="{% url 'search' %}">Search</a>
+                            {% if user.is_authenticated %}
+                                <a class="nav-link" href="{% url 'search' %}">Search</a>
+                            {% else %}
+                                <a class="nav-link" href="{% url 'search_anonymous' %}">Search</a>
+                            {% endif %}
                         </li>
                     </ul>
 
@@ -62,19 +66,28 @@
                                     <!-- notice the "bs"; it does not work otherwise; thank you Bootstrap -->
                                     <button class="btn btn-light dropdown-toggle" type="button" id="btn_accounts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-user-circle"></i>
-                                        &nbsp; Accounts
+                                        &nbsp;
+                                        {% if not user.is_authenticated %}
+                                            Login
+                                        {% else %}
+                                            {{ user.username }}
+                                        {% endif %}
                                     </button>
 
                                     <!-- accounts/... urls are not mapped by you; they automatically search for templates in directory 'registration' -->
                                     <!-- see: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#project_urls -->
                                     <div class="dropdown-menu" aria-labelledby="btn_accounts">
-                                        <a class="dropdown-item" href="{% url 'login' %}">Login as normal user</a>
-                                        <!--see: https://stackoverflow.com/questions/1022236/linking-to-the-django-admin-site -->
-                                        <a class="dropdown-item" href="{% url 'admin:index' %}">Login as administrator</a>
-                                        <a class="dropdown-item" href="{% url 'register' %}">Create account</a>
-                                        <a class="dropdown-item" href="{% url 'update_account' %}">Manage account</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                        {% if not user.is_authenticated %}
+                                            <a class="dropdown-item" href="{% url 'login' %}">As normal user</a>
+                                            <!--see: https://stackoverflow.com/questions/1022236/linking-to-the-django-admin-site -->
+                                            <a class="dropdown-item" href="{% url 'admin:index' %}">As administrator</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="{% url 'update_account' %}">Manage account</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

@@ -65,9 +65,6 @@ class Subcategory(models.Model):
         elif category == 'Technic': return TECHNIC_SUBCATEGORY_CHOICES
         elif category == 'Electric': return ELECTRIC_SUBCATEGORY_CHOICES
 
-    def get_absolute_url(self):
-        pass
-
 class LegoPart(models.Model):
     """
     Defines attributes of a Lego part.
@@ -84,25 +81,22 @@ class LegoPart(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        pass   
-
 # see: https://www.youtube.com/watch?v=mWNeTTDB3zQ&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=12
 class UserProfile(models.Model):
     """
     Defines attributes of a user.
     """
 
-    user = models.OneToOneField(User, on_delete = models.CASCADE, default = 0)
-    username = models.CharField(primary_key = True, max_length = 30, help_text = "Type username here", default = '')
-    password = models.CharField(max_length = 20, help_text = "Type password here", default = '')
-    first_name = models.CharField(max_length = 50, help_text = "Type first name here", default = '')
-    last_name = models.CharField(max_length = 50, help_text = "Type last name here", default = '')
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    username = models.CharField(primary_key = True, max_length = 30, help_text = "Type username here", blank = True)
+    password = models.CharField(max_length = 20, help_text = "Type password here", default = '', blank = True)
+    first_name = models.CharField(max_length = 50, help_text = "Type first name here", default = '', blank = True)
+    last_name = models.CharField(max_length = 50, help_text = "Type last name here", default = '', blank = True)
     email = models.EmailField(max_length = 100, help_text = "Type email here", default = '', blank = True)
-    image = models.ImageField(blank = True, upload_to = 'images/')
+    image = models.ImageField(upload_to = 'images/', blank = True)
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 # overrides the default User model in admin; see: https://www.youtube.com/watch?v=lxSZevvkcc4&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=12
 def create_profile(sender, **kwargs):

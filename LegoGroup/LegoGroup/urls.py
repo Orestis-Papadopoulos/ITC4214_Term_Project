@@ -40,6 +40,7 @@ urlpatterns = [
     path('accounts/login/', rv.login, name = 'login'),
 
     path('search/', cv.search, name = 'search'),
+    path('search_anonymous/', cv.search_anonymous, name = 'search_anonymous'),
 
     path('update_account/', rv.update_account, name = 'update_account'),
 
