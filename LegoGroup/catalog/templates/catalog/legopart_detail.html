@@ -13,31 +13,38 @@
     <br>
     <hr>
 
-    <p>
-        <strong>Id:</strong>
-        {{ legopart.id }}
-    </p>
-    <p>
-        <strong>Name:</strong>
-        {{ legopart.name }}
-    </p>
-    <p>
-        <strong>Description:</strong>
-        {{ legopart.description }}
-    </p>
-    <p>
-        <strong>Category:</strong>
-        {{ legopart.category }}
-    </p>
-    <p>
-        <strong>Subcategory:</strong>
-        {{ legopart.subcategory }}
-    </p>
-    <p>
-        <strong>Publicly available:</strong>
-        {{ legopart.public_access }}
-    </p>
-
-    <!-- not working; specify where the image is stored -->
-    <img src="{{ legopart.image.url }}" alt="IMAGE_ERROR" class="img-thumbnail">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>
+                    <strong>Id:</strong>
+                    {{ legopart.id }}
+                </p>
+                <p>
+                    <strong>Name:</strong>
+                    {{ legopart.name }}
+                </p>
+                <p>
+                    <strong>Description:</strong>
+                    {{ legopart.description }}
+                </p>
+                <p>
+                    <strong>Category:</strong>
+                    {{ legopart.category }}
+                </p>
+                <p>
+                    <strong>Subcategory:</strong>
+                    {{ legopart.subcategory }}
+                </p>
+                <p>
+                    <strong>Publicly available:</strong>
+                    {{ legopart.public_access }}
+                </p>
+            </div>
+            <div class="col">
+                <!-- the media directory is NOT created automatically; see: https://www.youtube.com/watch?v=tT2JOpfelSg&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=37 -->
+                <img src="{{ legopart.image.url }}" alt="IMAGE_ERROR" class="img-thumbnail" width="300" height="auto">
+            </div>
+        </div>
+    </div>
 {% endblock %}

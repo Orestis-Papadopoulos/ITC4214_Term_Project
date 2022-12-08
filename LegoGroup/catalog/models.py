@@ -1,6 +1,8 @@
 from django.db import models
 #import shortuuid # replace all 'default = uuid.uuid4' with 'default = shortuuid.uuid()'
 import uuid
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # define the category and subcategory first to reference them in later models as foreign keys directly
 
@@ -83,22 +85,28 @@ class LegoPart(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        pass
+        pass   
 
-class User(models.Model):
+# see: https://www.youtube.com/watch?v=mWNeTTDB3zQ&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=12
+class UserProfile(models.Model):
     """
     Defines attributes of a user.
     """
 
+    user = models.OneToOneField(User, on_delete = models.CASCADE, default = 0)
     username = models.CharField(primary_key = True, max_length = 30, help_text = "Type username here", default = '')
     password = models.CharField(max_length = 20, help_text = "Type password here", default = '')
     first_name = models.CharField(max_length = 50, help_text = "Type first name here", default = '')
     last_name = models.CharField(max_length = 50, help_text = "Type last name here", default = '')
     email = models.EmailField(max_length = 100, help_text = "Type email here", default = '', blank = True)
-    image = models.ImageField(blank = True)
+    image = models.ImageField(blank = True, upload_to = 'images/')
 
     def __str__(self):
         return self.username
 
-    def get_absolute_url(self):
-        pass
+# overrides the default User model in admin; see: https://www.youtube.com/watch?v=lxSZevvkcc4&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=12
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user = kwargs['instance'])
+
+post_save.connect(create_profile, sender = User)

@@ -19,4 +19,5 @@ urlpatterns = [
     path('bricks/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
     path('technics/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
     path('electrics/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
+    path('search_results/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
 ]

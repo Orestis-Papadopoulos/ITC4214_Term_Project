@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Subcategory, LegoPart, User
+from .models import Category, Subcategory, LegoPart, UserProfile
 
 # username: orestis
 # password: admin
@@ -8,4 +8,4 @@ from .models import Category, Subcategory, LegoPart, User
 admin.site.register(Category)
 admin.site.register(Subcategory)
 admin.site.register(LegoPart)
-admin.site.register(User)
+admin.site.register(UserProfile)

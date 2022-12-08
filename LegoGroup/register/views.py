@@ -37,6 +37,6 @@ def change_password(request):
         form = PasswordChangeForm(data = request.POST, user = request.user)
         if form.is_valid():
             form.save()
-            #return redirect('update_account/')
+            #return redirect('update_account/') # does not work
     
     return render(request, 'register/change_password.html', context = {'form': form})
