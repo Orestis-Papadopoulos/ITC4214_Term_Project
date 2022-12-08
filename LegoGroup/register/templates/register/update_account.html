@@ -2,17 +2,17 @@
 
 {% block title %}
     <title>
-        BrickViewer | Search
+        BrickViewer | Update Account
     </title>
 {% endblock %}
 
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="get" class="form-group" action="{% url 'search_results' %}">
+    <form method="POST" class="form-group">
         {% csrf_token %}
         {{ form | crispy }}
         <br>
-        <button type="submit" class="btn btn-success">Search</button>
+        <button type="submit" class="btn btn-success">Update</button>
     </form>
 {% endblock %}

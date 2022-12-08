@@ -12,7 +12,11 @@ urlpatterns = [
     path('bricks/', views.BrickListView.as_view(), name = 'bricks'),
     path('technics/', views.TechnicListView.as_view(), name = 'technics'),
     path('electrics/', views.ElectricListView.as_view(), name = 'electrics'),
+    path('search_results/', views.SearchResultsListView.as_view(), name = 'search_results'),
 
-    # for the detail views; need three more: 'bricks/<pk>/', ...
+    # for the detail views
     path('lego_parts/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
+    path('bricks/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
+    path('technics/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
+    path('electrics/<pk>/', views.LegoPartDetailView.as_view(), name = 'legopart-detail'),
 ]

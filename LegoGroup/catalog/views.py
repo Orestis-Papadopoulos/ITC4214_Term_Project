@@ -10,13 +10,7 @@ def about(request):
     return render(request, 'about.html')
 
 def search(request):
-    if request.method == "POST":
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect("/lego_parts/") # filter queryset here ???
-    else:
-        form = SearchForm()
+    form = SearchForm()
     return render(request, 'search.html', {"form": form})
 
 # start of ListViews
@@ -42,15 +36,19 @@ class ElectricListView(generic.ListView):
 class LegoPartListView(generic.ListView):
     model = LegoPart
 
-    user_input = ''
+class SearchResultsListView(generic.ListView):
+    model = LegoPart
 
-    search_by_name = True
-    search_by_category = False
-    search_by_subcategory = False
-    
-    if (search_by_name): queryset = LegoPart.objects.filter(name__icontains = user_input)
-    elif (search_by_category): queryset = LegoPart.objects.filter(category__icontains = user_input)
-    elif (search_by_subcategory): queryset = LegoPart.objects.filter(subcategory__icontains = user_input)
+    def get_queryset(self):
+        search_by = self.request.GET.get('search_by')
+        search_string = self.request.GET.get('search_string')     
+        # https://learndjango.com/tutorials/django-search-tutorial      
+        if search_by == 2:
+            return LegoPart.objects.filter(category = Category.objects.filter(name__icontains = search_string)) # does not work
+        elif search_by == 3:
+            return LegoPart.objects.filter(subcategory__name__icontains = 'Gear') # does not work
+
+        return LegoPart.objects.filter(name__icontains = search_string)
 
 # end of ListViews
 

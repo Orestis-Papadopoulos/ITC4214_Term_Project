@@ -25,84 +25,66 @@
     <body>
         <!-- Start of Navbar -->
         <nav class="navbar navbar-expand-lg bg-primary navbar-dark" style="box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);">
-            <!-- company logo and name -->
-            <a class="navbar-brand" href="#">
-                {% load static %}
-                <img src="{% static 'catalog/images/brick.png' %}" width="60" height="auto" alt="IMAGE_ERROR">
-                BrickViewer
-            </a>
+            <div class="container">
+                <!-- company logo and name -->
+                <a class="navbar-brand" href="#">
+                    {% load static %}
+                    <img src="{% static 'catalog/images/brick.png' %}" width="60" height="auto" alt="IMAGE_ERROR">
+                    BrickViewer
+                </a>
 
-            <!-- toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbar">
-                <!-- links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{% url 'search' %}">Search</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <!-- links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'search' %}">Search</a>
+                        </li>
+                    </ul>
 
-                <!-- start of form -->
-                <div class="container">
-                    <div class="row gx-2">
-                        <div class="col-md-auto">
-                            <div class="input-group">
-                                <!-- label for search criterion -->
-                                <label class="input-group-text" for="search_options">Search by</label>
+                    <!-- start of form -->
+                    <div class="container">
+                        <div class="row gx-2">
+                            
+                            <!-- accounts -->
+                            <div class="col-md-auto">
+                                <div class="dropdown">
+                                    <!-- notice the "bs"; it does not work otherwise; thank you Bootstrap -->
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="btn_accounts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user-circle"></i>
+                                        &nbsp; Accounts
+                                    </button>
 
-                                <!-- dropdown to select search criterion -->
-                                <select class="form-select" id="search_options">
-                                    <option value="name" selected>Name</option>
-                                    <option value="category">Category</option>
-                                    <option value="subcategory">Subcategory</option>
-                                </select>
-
-                                <!-- search bar -->
-                                <input type="text" class="form-control" placeholder="Type here" aria-label="" aria-describedby="button-addon2">
-                                
-                                <!-- search button -->
-                                <a class="btn btn-outline-light" href="{% url 'lego_parts' %}" style="display: flex; align-items: center;">
-                                    View parts &nbsp;
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- accounts -->
-                        <div class="col-md-auto">
-                            <div class="dropdown">
-                                <!-- notice the "bs"; it does not work otherwise; thank you Bootstrap -->
-                                <button class="btn btn-light dropdown-toggle" type="button" id="btn_accounts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user-circle"></i>
-                                    &nbsp; Accounts
-                                </button>
-
-                                <!-- accounts/... urls are not mapped by you; they automatically search for templates in directory 'registration' -->
-                                <!-- see: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#project_urls -->
-                                <div class="dropdown-menu" aria-labelledby="btn_accounts">
-                                    <a class="dropdown-item" href="{% url 'login' %}">Login as normal user</a>
-                                    <!--see: https://stackoverflow.com/questions/1022236/linking-to-the-django-admin-site -->
-                                    <a class="dropdown-item" href="{% url 'admin:index' %}">Login as administrator</a>
-                                    <a class="dropdown-item" href="{% url 'register' %}">Create account</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                    <!-- accounts/... urls are not mapped by you; they automatically search for templates in directory 'registration' -->
+                                    <!-- see: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#project_urls -->
+                                    <div class="dropdown-menu" aria-labelledby="btn_accounts">
+                                        <a class="dropdown-item" href="{% url 'login' %}">Login as normal user</a>
+                                        <!--see: https://stackoverflow.com/questions/1022236/linking-to-the-django-admin-site -->
+                                        <a class="dropdown-item" href="{% url 'admin:index' %}">Login as administrator</a>
+                                        <a class="dropdown-item" href="{% url 'register' %}">Create account</a>
+                                        <a class="dropdown-item" href="{% url 'update_account' %}">Manage account</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- end of form -->
                 </div>
-                <!-- end of form -->
             </div>
         </nav>
+        
         <!-- End of Navbar -->
 
         <div class="container">

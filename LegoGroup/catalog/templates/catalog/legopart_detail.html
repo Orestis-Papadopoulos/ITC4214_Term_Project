@@ -38,6 +38,6 @@
         {{ legopart.public_access }}
     </p>
 
-    <!-- not working -->
-    <img src="{{ legopart.image }}" alt="IMAGE_ERROR" class="img-thumbnail">
+    <!-- not working; specify where the image is stored -->
+    <img src="{{ legopart.image.url }}" alt="IMAGE_ERROR" class="img-thumbnail">
 {% endblock %}

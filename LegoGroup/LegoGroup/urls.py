@@ -41,6 +41,8 @@ urlpatterns = [
 
     path('search/', cv.search, name = 'search'),
 
-    # PRODUCES ERROR; enable the serving of static files during development
-    #static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-]
+    path('update_account/', rv.update_account, name = 'update_account'),
+
+    path('password/', rv.change_password, name = 'change_password')
+
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
