@@ -84,6 +84,9 @@
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{% url 'register' %}">Register</a>
                                         {% else %}
+                                            {% if user.is_superuser %}
+                                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin page</a>
+                                            {% endif %}
                                             <a class="dropdown-item" href="{% url 'update_account' %}">Manage account</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

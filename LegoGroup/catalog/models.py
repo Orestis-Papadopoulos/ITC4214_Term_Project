@@ -70,7 +70,7 @@ class LegoPart(models.Model):
     Defines attributes of a Lego part.
     """
 
-    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = True)
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4)
     name = models.CharField(max_length = 50, help_text = "Type part name")
     description = models.TextField(max_length = 1000, help_text = "Type part description (up to 1000 characters)", blank = True)
     image = models.ImageField(blank = True, upload_to = 'images/')
@@ -87,12 +87,8 @@ class UserProfile(models.Model):
     Defines attributes of a user.
     """
 
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    username = models.CharField(primary_key = True, max_length = 30, help_text = "Type username here", blank = True)
-    password = models.CharField(max_length = 20, help_text = "Type password here", default = '', blank = True)
-    first_name = models.CharField(max_length = 50, help_text = "Type first name here", default = '', blank = True)
-    last_name = models.CharField(max_length = 50, help_text = "Type last name here", default = '', blank = True)
-    email = models.EmailField(max_length = 100, help_text = "Type email here", default = '', blank = True)
+    # I have to specify 'user' as a primary key, but why ?
+    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
     image = models.ImageField(upload_to = 'images/', blank = True)
 
     def __str__(self):

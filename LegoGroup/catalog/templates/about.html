@@ -23,7 +23,9 @@
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    Company details here.
+                    BrickViewer is an application which aims to provide access to a list of Lego parts for users to browse.
+                    Pieces are organized based on the category and sub-category they belong to.
+                    For example, users can view regular or modern electric bricks.
                 </div>
             </div>
         </div>
@@ -37,7 +39,9 @@
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    Security detais here.
+                    The application is secure against XSS since the Django template system is used for the HTML part (as specified
+                    <a href="https://docs.djangoproject.com/en/4.1/ref/templates/language/#automatic-html-escaping" target="_blank">here</a>
+                    ).
                 </div>
             </div>
         </div>
@@ -51,7 +55,26 @@
             </h2>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    Course detais here.
+                    <p>
+                        <strong>Title:</strong>
+                        ITC4214 Internet Programming
+                    </p>
+                    <p>
+                        <strong>Instructor:</strong>
+                        Sofoklis Efremidis, Ph.D.
+                    </p>
+                    <p>
+                        <strong>Assignment:</strong>
+                        Term Project
+                    </p>
+                    <p>
+                        <strong>Due date:</strong>
+                        December 9, 2022
+                    </p>
+                    <p>
+                        <strong>Objective:</strong>
+                        This assignment asks you to demonstrate your ability to design and develop an enterprise web application.
+                    </p>
                 </div>
             </div>
         </div>
@@ -65,7 +88,24 @@
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    My personal detais here.
+                    <p>
+                        <strong>Name:</strong>
+                        Orestis Papadopoulos
+                    </p>
+                    <p>
+                        <strong>ID number:</strong>
+                        241394
+                    </p>
+                    <p>
+                        <strong>Status:</strong>
+                        Senior
+                    </p>
+                    <p>
+                        <strong>Email:</strong>
+                        o.papadopoulos@acg.edu
+                    </p>
+                    {% load static %}
+                    <img src="{% static 'catalog/images/o.papadopoulos_241394_headshot.jpg' %}" class="img-thumbnail" width="100" height="auto" alt="IMAGE_ERROR">
                 </div>
             </div>
         </div>
